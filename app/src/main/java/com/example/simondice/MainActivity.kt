@@ -18,11 +18,12 @@ class MainActivity : AppCompatActivity() {
 button.setOnClickListener {jugar()}
     }
 
-
-
-
     fun jugar(){Ronda=Ronda+1; mostrarRonda();ejecutarSecuencia();var toast=Toast.makeText(applicationContext,"Repite la secuencia",Toast.LENGTH_LONG).show()}
-    fun mostrarRonda(){findViewById<TextView>(R.id.textView2).setText(Ronda)}
+
+    fun mostrarRonda(){val numronda=findViewById<TextView>(R.id.textView2);
+    numronda.setText(Ronda.toString())
+
+    }
 
     fun ejecutarSecuencia(){
      val boton1=findViewById<ImageButton>(R.id.imageButton);
