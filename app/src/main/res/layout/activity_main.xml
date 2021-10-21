@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.527"
+        app:layout_constraintVertical_bias="0.526"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <ImageButton
