@@ -1,5 +1,7 @@
 package com.example.simondice
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.BoringLayout.make
@@ -10,6 +12,8 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.example.simondice.R.id.imageButton2
+import kotlinx.coroutines.delay
+import java.util.concurrent.Delayed
 
 class MainActivity : AppCompatActivity() {
     var Ronda = 0;
@@ -17,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val button = findViewById<Button>(R.id.button)
-        button.setOnClickListener { jugar() }
+       button.setOnClickListener { jugar() }
     }
 
     fun jugar() {
@@ -40,16 +44,13 @@ class MainActivity : AppCompatActivity() {
         val azul = findViewById<ImageButton>(R.id.imageButton3);
         val amarillo = findViewById<ImageButton>(R.id.imageButton4);
 
-        val secuencia:List<String> = listOf("rojo", "verde", "azul", "amarillo").shuffled()
+        val secuencia:List<ImageButton> = listOf(rojo, verde, azul, amarillo).shuffled()
         var secuencianueva= mutableListOf<String>()
-        var toast1 =
-            android.widget.Toast.makeText(applicationContext, secuencia[0].toString(), android.widget.Toast.LENGTH_LONG).show()
-        var toast2 =
-            android.widget.Toast.makeText(applicationContext, secuencia[1].toString(), android.widget.Toast.LENGTH_LONG).show()
-        var toast3 =
-            android.widget.Toast.makeText(applicationContext, secuencia[2].toString(), android.widget.Toast.LENGTH_LONG).show()
-        var toast4 =
-            android.widget.Toast.makeText(applicationContext, secuencia[3].toString(), android.widget.Toast.LENGTH_LONG).show()
+
+suspend fun color1(){ delay(500L);val color1=secuencia[0].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);}
+        suspend fun color2(){ delay(500L);val color1=secuencia[1].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);}
+        suspend fun color3(){ delay(500L);val color1=secuencia[2].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);}
+        suspend fun color4(){ delay(500L);val color1=secuencia[3].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);}
 
         rojo.setOnClickListener {
            secuencianueva.add("rojo")
