@@ -40,8 +40,7 @@ class MainActivity : AppCompatActivity() {
         val azul = findViewById<ImageButton>(R.id.imageButton3);
         val amarillo = findViewById<ImageButton>(R.id.imageButton4);
 
-        val secuencia = mutableListOf<String>("rojo", "verde", "azul", "amarillo")
-
+        val secuencia:List<String> = listOf("rojo", "verde", "azul", "amarillo").shuffled()
         var secuencianueva= mutableListOf<String>()
         var toast1 =
             android.widget.Toast.makeText(applicationContext, secuencia[0].toString(), android.widget.Toast.LENGTH_LONG).show()
