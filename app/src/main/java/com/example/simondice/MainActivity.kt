@@ -50,48 +50,63 @@ class MainActivity : AppCompatActivity() {
         val secuencia: List<ImageButton> = listOf(rojo, verde, azul, amarillo).shuffled()
         var secuencianueva = mutableListOf<ImageButton>()
 
+
         suspend fun color1() {
             delay(500L);
             val color1 = secuencia[0].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            delay(500L)
+
+            val color2 = secuencia[0].clearColorFilter()
+
         }
 
         suspend fun color2() {
             delay(1000L);
             val color1 = secuencia[1].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            delay(500L)
+            val color2 = secuencia[1].clearColorFilter()
         }
 
         suspend fun color3() {
             delay(1500L);
             val color1 = secuencia[2].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            delay(500L)
+
+            val color2 = secuencia[2].clearColorFilter()
         }
 
         suspend fun color4() {
             delay(2000L);
             val color1 = secuencia[3].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            delay(500L)
+
+            val color2 = secuencia[3].clearColorFilter()
         }
 
-val job1=GlobalScope.launch(Dispatchers.Main) {color1()  }
-        val job2=GlobalScope.launch(Dispatchers.Main) {color2()  }
-        val job3=GlobalScope.launch(Dispatchers.Main) {color3()  }
-        val job4=GlobalScope.launch(Dispatchers.Main) {color4()  }
-
+        val job1 = GlobalScope.launch(Dispatchers.Main) { color1() }
+        val job2 = GlobalScope.launch(Dispatchers.Main) { color2() }
+        val job3 = GlobalScope.launch(Dispatchers.Main) { color3() }
+        val job4 = GlobalScope.launch(Dispatchers.Main) { color4() }
+var cont=0
         rojo.setOnClickListener {
             secuencianueva.add(rojo)
+            cont=cont+1
         }
         verde.setOnClickListener {
             secuencianueva.add(verde)
-
+            cont=cont+1
         }
         azul.setOnClickListener {
             secuencianueva.add(azul)
+            cont=cont+1
         }
         amarillo.setOnClickListener {
             secuencianueva.add(amarillo)
+            cont=cont+1
         }
-
         var toast =
             Toast.makeText(applicationContext, "Repite la secuencia", Toast.LENGTH_LONG).show()
-
+        if(cont==4){
         if (secuencia == secuencianueva) {
             var toast =
                 android.widget.Toast.makeText(
@@ -108,7 +123,7 @@ val job1=GlobalScope.launch(Dispatchers.Main) {color1()  }
                 ).show()
             val numronda = findViewById<TextView>(R.id.textView2);
 
-        }
+        }}
 
 
     }
