@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.Delayed
 
 class MainActivity : AppCompatActivity() {
-    var Ronda = 0;
+    var Ronda = 1;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
     fun jugar() {
         Log.i("estado", "empieza el juego")
-        Ronda = Ronda + 1
         mostrarRonda()
         ejecutarSecuencia()
 
@@ -85,12 +84,12 @@ class MainActivity : AppCompatActivity() {
         val job2 = GlobalScope.launch(Dispatchers.Main) { color2() }
         val job3 = GlobalScope.launch(Dispatchers.Main) { color3() }
         val job4 = GlobalScope.launch(Dispatchers.Main) { color4() }
-var cont=0
+        var cont = 0
         var secuencianueva = mutableListOf<ImageButton>()
         rojo.setOnClickListener {
             secuencianueva.add(rojo)
-            cont=cont+1
-            if(cont==4){
+            cont = cont + 1
+            if (cont == 4) {
                 if (secuencia == secuencianueva) {
                     var toast =
                         android.widget.Toast.makeText(
@@ -98,6 +97,8 @@ var cont=0
                             "Ganaste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
+                    Ronda = Ronda + 1
+                    mostrarRonda()
                 } else {
                     var toast =
                         android.widget.Toast.makeText(
@@ -105,14 +106,16 @@ var cont=0
                             "Perdiste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
-                    val numronda = findViewById<TextView>(R.id.textView2);
+                    Ronda=1
+                    mostrarRonda()
 
-                }}
+                }
+            }
         }
         verde.setOnClickListener {
             secuencianueva.add(verde)
-            cont=cont+1
-            if(cont==4){
+            cont = cont + 1
+            if (cont == 4) {
                 if (secuencia == secuencianueva) {
                     var toast =
                         android.widget.Toast.makeText(
@@ -120,6 +123,8 @@ var cont=0
                             "Ganaste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
+                    Ronda = Ronda + 1
+                    mostrarRonda()
                 } else {
                     var toast =
                         android.widget.Toast.makeText(
@@ -127,14 +132,17 @@ var cont=0
                             "Perdiste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
-                    val numronda = findViewById<TextView>(R.id.textView2);
+                    Ronda=1
+                    mostrarRonda()
 
-                }}
+
+                }
+            }
         }
         azul.setOnClickListener {
             secuencianueva.add(azul)
-            cont=cont+1
-            if(cont==4){
+            cont = cont + 1
+            if (cont == 4) {
                 if (secuencia == secuencianueva) {
                     var toast =
                         android.widget.Toast.makeText(
@@ -142,6 +150,8 @@ var cont=0
                             "Ganaste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
+                    Ronda = Ronda + 1
+                    mostrarRonda()
                 } else {
                     var toast =
                         android.widget.Toast.makeText(
@@ -149,35 +159,40 @@ var cont=0
                             "Perdiste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
-                    val numronda = findViewById<TextView>(R.id.textView2);
+                    Ronda=1
+                    mostrarRonda()
 
-                }}
+                }
+            }
         }
         amarillo.setOnClickListener {
             secuencianueva.add(amarillo)
-            cont=cont+1
-            if(cont==4){
-            if (secuencia == secuencianueva) {
-                var toast =
-                    android.widget.Toast.makeText(
-                        applicationContext,
-                        "Ganaste",
-                        android.widget.Toast.LENGTH_LONG
-                    ).show()
-            } else {
-                var toast =
-                    android.widget.Toast.makeText(
-                        applicationContext,
-                        "Perdiste",
-                        android.widget.Toast.LENGTH_LONG
-                    ).show()
-                val numronda = findViewById<TextView>(R.id.textView2);
+            cont = cont + 1
+            if (cont == 4) {
+                if (secuencia == secuencianueva) {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Ganaste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                    Ronda = Ronda + 1
+                    mostrarRonda()
+                } else {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Perdiste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                    Ronda=1
+                    mostrarRonda()
 
-            }}
+                }
+            }
         }
         var toast =
             Toast.makeText(applicationContext, "Repite la secuencia", Toast.LENGTH_LONG).show()
-
 
 
     }
