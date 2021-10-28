@@ -48,8 +48,6 @@ class MainActivity : AppCompatActivity() {
         val amarillo = findViewById<ImageButton>(R.id.imageButton4);
 
         val secuencia: List<ImageButton> = listOf(rojo, verde, azul, amarillo).shuffled()
-        var secuencianueva = mutableListOf<ImageButton>()
-
 
         suspend fun color1() {
             delay(500L);
@@ -88,42 +86,98 @@ class MainActivity : AppCompatActivity() {
         val job3 = GlobalScope.launch(Dispatchers.Main) { color3() }
         val job4 = GlobalScope.launch(Dispatchers.Main) { color4() }
 var cont=0
+        var secuencianueva = mutableListOf<ImageButton>()
         rojo.setOnClickListener {
             secuencianueva.add(rojo)
             cont=cont+1
+            if(cont==4){
+                if (secuencia == secuencianueva) {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Ganaste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                } else {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Perdiste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                    val numronda = findViewById<TextView>(R.id.textView2);
+
+                }}
         }
         verde.setOnClickListener {
             secuencianueva.add(verde)
             cont=cont+1
+            if(cont==4){
+                if (secuencia == secuencianueva) {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Ganaste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                } else {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Perdiste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                    val numronda = findViewById<TextView>(R.id.textView2);
+
+                }}
         }
         azul.setOnClickListener {
             secuencianueva.add(azul)
             cont=cont+1
+            if(cont==4){
+                if (secuencia == secuencianueva) {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Ganaste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                } else {
+                    var toast =
+                        android.widget.Toast.makeText(
+                            applicationContext,
+                            "Perdiste",
+                            android.widget.Toast.LENGTH_LONG
+                        ).show()
+                    val numronda = findViewById<TextView>(R.id.textView2);
+
+                }}
         }
         amarillo.setOnClickListener {
             secuencianueva.add(amarillo)
             cont=cont+1
+            if(cont==4){
+            if (secuencia == secuencianueva) {
+                var toast =
+                    android.widget.Toast.makeText(
+                        applicationContext,
+                        "Ganaste",
+                        android.widget.Toast.LENGTH_LONG
+                    ).show()
+            } else {
+                var toast =
+                    android.widget.Toast.makeText(
+                        applicationContext,
+                        "Perdiste",
+                        android.widget.Toast.LENGTH_LONG
+                    ).show()
+                val numronda = findViewById<TextView>(R.id.textView2);
+
+            }}
         }
         var toast =
             Toast.makeText(applicationContext, "Repite la secuencia", Toast.LENGTH_LONG).show()
-        if(cont==4){
-        if (secuencia == secuencianueva) {
-            var toast =
-                android.widget.Toast.makeText(
-                    applicationContext,
-                    "Ganaste",
-                    android.widget.Toast.LENGTH_LONG
-                ).show()
-        } else {
-            var toast =
-                android.widget.Toast.makeText(
-                    applicationContext,
-                    "Perdiste",
-                    android.widget.Toast.LENGTH_LONG
-                ).show()
-            val numronda = findViewById<TextView>(R.id.textView2);
 
-        }}
 
 
     }
