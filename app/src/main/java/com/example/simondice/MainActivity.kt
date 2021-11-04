@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val button = findViewById<Button>(R.id.button)
+        val button = findViewById<ImageButton>(R.id.button)
         button.setOnClickListener { jugar() }
     }
 
@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity() {
         val azul = findViewById<ImageButton>(R.id.imageButton3);
         val amarillo = findViewById<ImageButton>(R.id.imageButton4);
 
-        var secuencia: List<ImageButton> = listOf(rojo, verde, azul, amarillo).shuffled()
+        var secuencia7: List<ImageButton> = listOf(rojo, verde, azul, amarillo)
+        var secuencia: MutableList<ImageButton> = mutableListOf(secuencia7.random(),secuencia7.random(),secuencia7.random(),secuencia7.random())
 
         suspend fun color1() {
             delay(500L);
@@ -80,10 +81,15 @@ class MainActivity : AppCompatActivity() {
             val color2 = secuencia[3].clearColorFilter()
         }
 
-        val job1 = GlobalScope.launch(Dispatchers.Main) { color1() }
-        val job2 = GlobalScope.launch(Dispatchers.Main) { color2() }
-        val job3 = GlobalScope.launch(Dispatchers.Main) { color3() }
-        val job4 = GlobalScope.launch(Dispatchers.Main) { color4() }
+
+
+            val job1 = GlobalScope.launch(Dispatchers.Main) { color1() }
+            val job2 = GlobalScope.launch(Dispatchers.Main) { color2() }
+            val job3 = GlobalScope.launch(Dispatchers.Main) { color3() }
+            val job4 = GlobalScope.launch(Dispatchers.Main) { color4() }
+
+
+
         var cont = 0
         var secuencianueva = mutableListOf<ImageButton>()
         rojo.setOnClickListener {
