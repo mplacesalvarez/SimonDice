@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         val azul = findViewById<ImageButton>(R.id.imageButton3);
         val amarillo = findViewById<ImageButton>(R.id.imageButton4);
 
-        val secuencia: List<ImageButton> = listOf(rojo, verde, azul, amarillo).shuffled()
+        var secuencia: List<ImageButton> = listOf(rojo, verde, azul, amarillo).shuffled()
 
         suspend fun color1() {
             delay(500L);
@@ -87,6 +87,14 @@ class MainActivity : AppCompatActivity() {
         var cont = 0
         var secuencianueva = mutableListOf<ImageButton>()
         rojo.setOnClickListener {
+            suspend fun parpadeo_rojo() {
+                rojo.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
+                delay(200L)
+
+                rojo.clearColorFilter()
+            }
+
+            val job1 = GlobalScope.launch(Dispatchers.Main) { parpadeo_rojo() }
             secuencianueva.add(rojo)
             cont = cont + 1
             if (cont == 4) {
@@ -106,13 +114,22 @@ class MainActivity : AppCompatActivity() {
                             "Perdiste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
-                    Ronda=1
+                    Ronda = 1
                     mostrarRonda()
 
                 }
             }
         }
         verde.setOnClickListener {
+            suspend fun parpadeo_verde() {
+                verde.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
+                delay(200L)
+
+                verde.clearColorFilter()
+            }
+
+            val job1 = GlobalScope.launch(Dispatchers.Main) { parpadeo_verde() }
+
             secuencianueva.add(verde)
             cont = cont + 1
             if (cont == 4) {
@@ -132,7 +149,7 @@ class MainActivity : AppCompatActivity() {
                             "Perdiste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
-                    Ronda=1
+                    Ronda = 1
                     mostrarRonda()
 
 
@@ -140,6 +157,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
         azul.setOnClickListener {
+            suspend fun parpadeo_azul() {
+                azul.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
+                delay(200L)
+
+                azul.clearColorFilter()
+            }
+
+            val job1 = GlobalScope.launch(Dispatchers.Main) { parpadeo_azul() }
+            azul.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             secuencianueva.add(azul)
             cont = cont + 1
             if (cont == 4) {
@@ -159,13 +185,22 @@ class MainActivity : AppCompatActivity() {
                             "Perdiste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
-                    Ronda=1
+                    Ronda = 1
                     mostrarRonda()
 
                 }
             }
         }
         amarillo.setOnClickListener {
+            suspend fun parpadeo_amarillo() {
+                amarillo.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
+                delay(200L)
+
+                amarillo.clearColorFilter()
+            }
+
+            val job1 = GlobalScope.launch(Dispatchers.Main) { parpadeo_amarillo() }
+            amarillo.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             secuencianueva.add(amarillo)
             cont = cont + 1
             if (cont == 4) {
@@ -185,7 +220,7 @@ class MainActivity : AppCompatActivity() {
                             "Perdiste",
                             android.widget.Toast.LENGTH_LONG
                         ).show()
-                    Ronda=1
+                    Ronda = 1
                     mostrarRonda()
 
                 }
