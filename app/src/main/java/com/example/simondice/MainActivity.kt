@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         suspend fun color1() {
             delay(500L);
-            val color1 = secuencia[0].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            val color1 = secuencia[0].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             delay(500L)
 
             val color2 = secuencia[0].clearColorFilter()
@@ -59,14 +59,14 @@ class MainActivity : AppCompatActivity() {
 
         suspend fun color2() {
             delay(1000L);
-            val color1 = secuencia[1].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            val color1 = secuencia[1].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             delay(500L)
             val color2 = secuencia[1].clearColorFilter()
         }
 
         suspend fun color3() {
             delay(1500L);
-            val color1 = secuencia[2].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            val color1 = secuencia[2].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             delay(500L)
 
             val color2 = secuencia[2].clearColorFilter()
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
         suspend fun color4() {
             delay(2000L);
-            val color1 = secuencia[3].setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            val color1 = secuencia[3].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             delay(500L)
 
             val color2 = secuencia[3].clearColorFilter()
