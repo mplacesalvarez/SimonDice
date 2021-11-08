@@ -47,47 +47,26 @@ class MainActivity : AppCompatActivity() {
         val amarillo = findViewById<ImageButton>(R.id.imageButton4);
 
         var secuencia7: List<ImageButton> = listOf(rojo, verde, azul, amarillo)
-        var secuencia: MutableList<ImageButton> = mutableListOf(secuencia7.random(),secuencia7.random(),secuencia7.random(),secuencia7.random())
-
-        suspend fun color1() {
-            delay(500L);
-            val color1 = secuencia[0].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
-            delay(500L)
-
-            val color2 = secuencia[0].clearColorFilter()
-
-        }
-
-        suspend fun color2() {
-            delay(1000L);
-            val color1 = secuencia[1].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
-            delay(500L)
-            val color2 = secuencia[1].clearColorFilter()
-        }
-
-        suspend fun color3() {
-            delay(1500L);
-            val color1 = secuencia[2].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
-            delay(500L)
-
-            val color2 = secuencia[2].clearColorFilter()
-        }
-
-        suspend fun color4() {
-            delay(2000L);
-            val color1 = secuencia[3].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
-            delay(500L)
-
-            val color2 = secuencia[3].clearColorFilter()
+        var secuencia: MutableList<ImageButton> = mutableListOf()
+        for (i in 1..Ronda + 1) {
+            secuencia.add(secuencia7.random())
         }
 
 
 
-            val job1 = GlobalScope.launch(Dispatchers.Main) { color1() }
-            val job2 = GlobalScope.launch(Dispatchers.Main) { color2() }
-            val job3 = GlobalScope.launch(Dispatchers.Main) { color3() }
-            val job4 = GlobalScope.launch(Dispatchers.Main) { color4() }
+        suspend fun color() {
+            var delay = 0
+            for (i in 0..secuencia.size - 1) {
+                delay(delay + 500L);
+                val color1 = secuencia[i].setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
+                delay(500L)
 
+                val color2 = secuencia[i].clearColorFilter()
+            }
+        }
+
+
+        val job1 = GlobalScope.launch(Dispatchers.Main) { color() }
 
 
         var cont = 0
@@ -103,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             val job1 = GlobalScope.launch(Dispatchers.Main) { parpadeo_rojo() }
             secuencianueva.add(rojo)
             cont = cont + 1
-            if (cont == 4) {
+            if (cont == secuencia.size) {
                 if (secuencia == secuencianueva) {
                     var toast =
                         android.widget.Toast.makeText(
@@ -138,7 +117,7 @@ class MainActivity : AppCompatActivity() {
 
             secuencianueva.add(verde)
             cont = cont + 1
-            if (cont == 4) {
+            if (cont == secuencia.size) {
                 if (secuencia == secuencianueva) {
                     var toast =
                         android.widget.Toast.makeText(
@@ -174,7 +153,7 @@ class MainActivity : AppCompatActivity() {
             azul.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             secuencianueva.add(azul)
             cont = cont + 1
-            if (cont == 4) {
+            if (cont == secuencia.size) {
                 if (secuencia == secuencianueva) {
                     var toast =
                         android.widget.Toast.makeText(
@@ -209,7 +188,7 @@ class MainActivity : AppCompatActivity() {
             amarillo.setColorFilter(Color.WHITE, PorterDuff.Mode.OVERLAY);
             secuencianueva.add(amarillo)
             cont = cont + 1
-            if (cont == 4) {
+            if (cont == secuencia.size) {
                 if (secuencia == secuencianueva) {
                     var toast =
                         android.widget.Toast.makeText(
